@@ -1,0 +1,912 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    B
+    BN
+    MB
+    NB
+    T
+
+Grammar
+
+Rule 0     S' -> S
+Rule 1     S -> Remitente P Password A Asunto D Destinatario M Mensaje
+Rule 2     Remitente -> Correo
+Rule 3     Asunto -> Letras transformacion
+Rule 4     Asunto -> Numeros transformacion
+Rule 5     Asunto -> CARACTERES
+Rule 6     Asunto -> empty
+Rule 7     Mensaje -> Letras transformacion
+Rule 8     Mensaje -> Numeros transformacion
+Rule 9     Mensaje -> CARACTERES
+Rule 10    Mensaje -> empty
+Rule 11    Destinatario -> Correo
+Rule 12    Password -> Letras restoPass
+Rule 13    Password -> Numeros restoPass
+Rule 14    Password -> Caracteres restoPass
+Rule 15    restoPass -> Letras restoPass
+Rule 16    restoPass -> Numeros restoPass
+Rule 17    restoPass -> Caracteres restoPass
+Rule 18    restoPass -> empty
+Rule 19    Caracteres -> CARACTERES
+Rule 20    Correo -> Usuario ARROBA Dominio PUNTO Tipo
+Rule 21    Usuario -> Letras restoID
+Rule 22    Usuario -> Numeros restoID
+Rule 23    restoID -> Letras restoID
+Rule 24    restoID -> GUIONBAJO restoID
+Rule 25    restoID -> Numeros restoID
+Rule 26    restoID -> PUNTO restoID
+Rule 27    restoID -> empty
+Rule 28    Dominio -> DOMINIO
+Rule 29    Tipo -> TIPO
+Rule 30    Letras -> LETRAS
+Rule 31    Numeros -> DIGITOS
+Rule 32    transformacion -> Letras transformacion
+Rule 33    transformacion -> Numeros transformacion
+Rule 34    transformacion -> empty
+Rule 35    empty -> <empty>
+
+Terminals, with rules where they appear
+
+A                    : 1
+ARROBA               : 20
+B                    : 
+BN                   : 
+CARACTERES           : 5 9 19
+D                    : 1
+DIGITOS              : 31
+DOMINIO              : 28
+GUIONBAJO            : 24
+LETRAS               : 30
+M                    : 1
+MB                   : 
+NB                   : 
+P                    : 1
+PUNTO                : 20 26
+T                    : 
+TIPO                 : 29
+error                : 
+
+Nonterminals, with rules where they appear
+
+Asunto               : 1
+Caracteres           : 14 17
+Correo               : 2 11
+Destinatario         : 1
+Dominio              : 20
+Letras               : 3 7 12 15 21 23 32
+Mensaje              : 1
+Numeros              : 4 8 13 16 22 25 33
+Password             : 1
+Remitente            : 1
+S                    : 0
+Tipo                 : 20
+Usuario              : 20
+empty                : 6 10 18 27 34
+restoID              : 21 22 23 24 25 26
+restoPass            : 12 13 14 15 16 17
+transformacion       : 3 4 7 8 32 33
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . S
+    (1) S -> . Remitente P Password A Asunto D Destinatario M Mensaje
+    (2) Remitente -> . Correo
+    (20) Correo -> . Usuario ARROBA Dominio PUNTO Tipo
+    (21) Usuario -> . Letras restoID
+    (22) Usuario -> . Numeros restoID
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+
+    S                              shift and go to state 1
+    Remitente                      shift and go to state 2
+    Correo                         shift and go to state 3
+    Usuario                        shift and go to state 4
+    Letras                         shift and go to state 5
+    Numeros                        shift and go to state 6
+
+state 1
+
+    (0) S' -> S .
+
+
+
+state 2
+
+    (1) S -> Remitente . P Password A Asunto D Destinatario M Mensaje
+
+    P               shift and go to state 9
+
+
+state 3
+
+    (2) Remitente -> Correo .
+
+    P               reduce using rule 2 (Remitente -> Correo .)
+
+
+state 4
+
+    (20) Correo -> Usuario . ARROBA Dominio PUNTO Tipo
+
+    ARROBA          shift and go to state 10
+
+
+state 5
+
+    (21) Usuario -> Letras . restoID
+    (23) restoID -> . Letras restoID
+    (24) restoID -> . GUIONBAJO restoID
+    (25) restoID -> . Numeros restoID
+    (26) restoID -> . PUNTO restoID
+    (27) restoID -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (35) empty -> .
+
+    GUIONBAJO       shift and go to state 13
+    PUNTO           shift and go to state 15
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    ARROBA          reduce using rule 35 (empty -> .)
+
+    Letras                         shift and go to state 11
+    restoID                        shift and go to state 12
+    Numeros                        shift and go to state 14
+    empty                          shift and go to state 16
+
+state 6
+
+    (22) Usuario -> Numeros . restoID
+    (23) restoID -> . Letras restoID
+    (24) restoID -> . GUIONBAJO restoID
+    (25) restoID -> . Numeros restoID
+    (26) restoID -> . PUNTO restoID
+    (27) restoID -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (35) empty -> .
+
+    GUIONBAJO       shift and go to state 13
+    PUNTO           shift and go to state 15
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    ARROBA          reduce using rule 35 (empty -> .)
+
+    Numeros                        shift and go to state 14
+    restoID                        shift and go to state 17
+    Letras                         shift and go to state 11
+    empty                          shift and go to state 16
+
+state 7
+
+    (30) Letras -> LETRAS .
+
+    GUIONBAJO       reduce using rule 30 (Letras -> LETRAS .)
+    PUNTO           reduce using rule 30 (Letras -> LETRAS .)
+    LETRAS          reduce using rule 30 (Letras -> LETRAS .)
+    DIGITOS         reduce using rule 30 (Letras -> LETRAS .)
+    ARROBA          reduce using rule 30 (Letras -> LETRAS .)
+    CARACTERES      reduce using rule 30 (Letras -> LETRAS .)
+    A               reduce using rule 30 (Letras -> LETRAS .)
+    D               reduce using rule 30 (Letras -> LETRAS .)
+    $end            reduce using rule 30 (Letras -> LETRAS .)
+
+
+state 8
+
+    (31) Numeros -> DIGITOS .
+
+    GUIONBAJO       reduce using rule 31 (Numeros -> DIGITOS .)
+    PUNTO           reduce using rule 31 (Numeros -> DIGITOS .)
+    LETRAS          reduce using rule 31 (Numeros -> DIGITOS .)
+    DIGITOS         reduce using rule 31 (Numeros -> DIGITOS .)
+    ARROBA          reduce using rule 31 (Numeros -> DIGITOS .)
+    CARACTERES      reduce using rule 31 (Numeros -> DIGITOS .)
+    A               reduce using rule 31 (Numeros -> DIGITOS .)
+    D               reduce using rule 31 (Numeros -> DIGITOS .)
+    $end            reduce using rule 31 (Numeros -> DIGITOS .)
+
+
+state 9
+
+    (1) S -> Remitente P . Password A Asunto D Destinatario M Mensaje
+    (12) Password -> . Letras restoPass
+    (13) Password -> . Numeros restoPass
+    (14) Password -> . Caracteres restoPass
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (19) Caracteres -> . CARACTERES
+
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    CARACTERES      shift and go to state 22
+
+    Password                       shift and go to state 18
+    Letras                         shift and go to state 19
+    Numeros                        shift and go to state 20
+    Caracteres                     shift and go to state 21
+
+state 10
+
+    (20) Correo -> Usuario ARROBA . Dominio PUNTO Tipo
+    (28) Dominio -> . DOMINIO
+
+    DOMINIO         shift and go to state 24
+
+    Dominio                        shift and go to state 23
+
+state 11
+
+    (23) restoID -> Letras . restoID
+    (23) restoID -> . Letras restoID
+    (24) restoID -> . GUIONBAJO restoID
+    (25) restoID -> . Numeros restoID
+    (26) restoID -> . PUNTO restoID
+    (27) restoID -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (35) empty -> .
+
+    GUIONBAJO       shift and go to state 13
+    PUNTO           shift and go to state 15
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    ARROBA          reduce using rule 35 (empty -> .)
+
+    Letras                         shift and go to state 11
+    restoID                        shift and go to state 25
+    Numeros                        shift and go to state 14
+    empty                          shift and go to state 16
+
+state 12
+
+    (21) Usuario -> Letras restoID .
+
+    ARROBA          reduce using rule 21 (Usuario -> Letras restoID .)
+
+
+state 13
+
+    (24) restoID -> GUIONBAJO . restoID
+    (23) restoID -> . Letras restoID
+    (24) restoID -> . GUIONBAJO restoID
+    (25) restoID -> . Numeros restoID
+    (26) restoID -> . PUNTO restoID
+    (27) restoID -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (35) empty -> .
+
+    GUIONBAJO       shift and go to state 13
+    PUNTO           shift and go to state 15
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    ARROBA          reduce using rule 35 (empty -> .)
+
+    restoID                        shift and go to state 26
+    Letras                         shift and go to state 11
+    Numeros                        shift and go to state 14
+    empty                          shift and go to state 16
+
+state 14
+
+    (25) restoID -> Numeros . restoID
+    (23) restoID -> . Letras restoID
+    (24) restoID -> . GUIONBAJO restoID
+    (25) restoID -> . Numeros restoID
+    (26) restoID -> . PUNTO restoID
+    (27) restoID -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (35) empty -> .
+
+    GUIONBAJO       shift and go to state 13
+    PUNTO           shift and go to state 15
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    ARROBA          reduce using rule 35 (empty -> .)
+
+    Numeros                        shift and go to state 14
+    restoID                        shift and go to state 27
+    Letras                         shift and go to state 11
+    empty                          shift and go to state 16
+
+state 15
+
+    (26) restoID -> PUNTO . restoID
+    (23) restoID -> . Letras restoID
+    (24) restoID -> . GUIONBAJO restoID
+    (25) restoID -> . Numeros restoID
+    (26) restoID -> . PUNTO restoID
+    (27) restoID -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (35) empty -> .
+
+    GUIONBAJO       shift and go to state 13
+    PUNTO           shift and go to state 15
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    ARROBA          reduce using rule 35 (empty -> .)
+
+    restoID                        shift and go to state 28
+    Letras                         shift and go to state 11
+    Numeros                        shift and go to state 14
+    empty                          shift and go to state 16
+
+state 16
+
+    (27) restoID -> empty .
+
+    ARROBA          reduce using rule 27 (restoID -> empty .)
+
+
+state 17
+
+    (22) Usuario -> Numeros restoID .
+
+    ARROBA          reduce using rule 22 (Usuario -> Numeros restoID .)
+
+
+state 18
+
+    (1) S -> Remitente P Password . A Asunto D Destinatario M Mensaje
+
+    A               shift and go to state 29
+
+
+state 19
+
+    (12) Password -> Letras . restoPass
+    (15) restoPass -> . Letras restoPass
+    (16) restoPass -> . Numeros restoPass
+    (17) restoPass -> . Caracteres restoPass
+    (18) restoPass -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (19) Caracteres -> . CARACTERES
+    (35) empty -> .
+
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    CARACTERES      shift and go to state 22
+    A               reduce using rule 35 (empty -> .)
+
+    Letras                         shift and go to state 30
+    restoPass                      shift and go to state 31
+    Numeros                        shift and go to state 32
+    Caracteres                     shift and go to state 33
+    empty                          shift and go to state 34
+
+state 20
+
+    (13) Password -> Numeros . restoPass
+    (15) restoPass -> . Letras restoPass
+    (16) restoPass -> . Numeros restoPass
+    (17) restoPass -> . Caracteres restoPass
+    (18) restoPass -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (19) Caracteres -> . CARACTERES
+    (35) empty -> .
+
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    CARACTERES      shift and go to state 22
+    A               reduce using rule 35 (empty -> .)
+
+    Numeros                        shift and go to state 32
+    restoPass                      shift and go to state 35
+    Letras                         shift and go to state 30
+    Caracteres                     shift and go to state 33
+    empty                          shift and go to state 34
+
+state 21
+
+    (14) Password -> Caracteres . restoPass
+    (15) restoPass -> . Letras restoPass
+    (16) restoPass -> . Numeros restoPass
+    (17) restoPass -> . Caracteres restoPass
+    (18) restoPass -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (19) Caracteres -> . CARACTERES
+    (35) empty -> .
+
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    CARACTERES      shift and go to state 22
+    A               reduce using rule 35 (empty -> .)
+
+    Caracteres                     shift and go to state 33
+    restoPass                      shift and go to state 36
+    Letras                         shift and go to state 30
+    Numeros                        shift and go to state 32
+    empty                          shift and go to state 34
+
+state 22
+
+    (19) Caracteres -> CARACTERES .
+
+    LETRAS          reduce using rule 19 (Caracteres -> CARACTERES .)
+    DIGITOS         reduce using rule 19 (Caracteres -> CARACTERES .)
+    CARACTERES      reduce using rule 19 (Caracteres -> CARACTERES .)
+    A               reduce using rule 19 (Caracteres -> CARACTERES .)
+
+
+state 23
+
+    (20) Correo -> Usuario ARROBA Dominio . PUNTO Tipo
+
+    PUNTO           shift and go to state 37
+
+
+state 24
+
+    (28) Dominio -> DOMINIO .
+
+    PUNTO           reduce using rule 28 (Dominio -> DOMINIO .)
+
+
+state 25
+
+    (23) restoID -> Letras restoID .
+
+    ARROBA          reduce using rule 23 (restoID -> Letras restoID .)
+
+
+state 26
+
+    (24) restoID -> GUIONBAJO restoID .
+
+    ARROBA          reduce using rule 24 (restoID -> GUIONBAJO restoID .)
+
+
+state 27
+
+    (25) restoID -> Numeros restoID .
+
+    ARROBA          reduce using rule 25 (restoID -> Numeros restoID .)
+
+
+state 28
+
+    (26) restoID -> PUNTO restoID .
+
+    ARROBA          reduce using rule 26 (restoID -> PUNTO restoID .)
+
+
+state 29
+
+    (1) S -> Remitente P Password A . Asunto D Destinatario M Mensaje
+    (3) Asunto -> . Letras transformacion
+    (4) Asunto -> . Numeros transformacion
+    (5) Asunto -> . CARACTERES
+    (6) Asunto -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (35) empty -> .
+
+    CARACTERES      shift and go to state 41
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    D               reduce using rule 35 (empty -> .)
+
+    Asunto                         shift and go to state 38
+    Letras                         shift and go to state 39
+    Numeros                        shift and go to state 40
+    empty                          shift and go to state 42
+
+state 30
+
+    (15) restoPass -> Letras . restoPass
+    (15) restoPass -> . Letras restoPass
+    (16) restoPass -> . Numeros restoPass
+    (17) restoPass -> . Caracteres restoPass
+    (18) restoPass -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (19) Caracteres -> . CARACTERES
+    (35) empty -> .
+
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    CARACTERES      shift and go to state 22
+    A               reduce using rule 35 (empty -> .)
+
+    Letras                         shift and go to state 30
+    restoPass                      shift and go to state 43
+    Numeros                        shift and go to state 32
+    Caracteres                     shift and go to state 33
+    empty                          shift and go to state 34
+
+state 31
+
+    (12) Password -> Letras restoPass .
+
+    A               reduce using rule 12 (Password -> Letras restoPass .)
+
+
+state 32
+
+    (16) restoPass -> Numeros . restoPass
+    (15) restoPass -> . Letras restoPass
+    (16) restoPass -> . Numeros restoPass
+    (17) restoPass -> . Caracteres restoPass
+    (18) restoPass -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (19) Caracteres -> . CARACTERES
+    (35) empty -> .
+
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    CARACTERES      shift and go to state 22
+    A               reduce using rule 35 (empty -> .)
+
+    Numeros                        shift and go to state 32
+    restoPass                      shift and go to state 44
+    Letras                         shift and go to state 30
+    Caracteres                     shift and go to state 33
+    empty                          shift and go to state 34
+
+state 33
+
+    (17) restoPass -> Caracteres . restoPass
+    (15) restoPass -> . Letras restoPass
+    (16) restoPass -> . Numeros restoPass
+    (17) restoPass -> . Caracteres restoPass
+    (18) restoPass -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (19) Caracteres -> . CARACTERES
+    (35) empty -> .
+
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    CARACTERES      shift and go to state 22
+    A               reduce using rule 35 (empty -> .)
+
+    Caracteres                     shift and go to state 33
+    restoPass                      shift and go to state 45
+    Letras                         shift and go to state 30
+    Numeros                        shift and go to state 32
+    empty                          shift and go to state 34
+
+state 34
+
+    (18) restoPass -> empty .
+
+    A               reduce using rule 18 (restoPass -> empty .)
+
+
+state 35
+
+    (13) Password -> Numeros restoPass .
+
+    A               reduce using rule 13 (Password -> Numeros restoPass .)
+
+
+state 36
+
+    (14) Password -> Caracteres restoPass .
+
+    A               reduce using rule 14 (Password -> Caracteres restoPass .)
+
+
+state 37
+
+    (20) Correo -> Usuario ARROBA Dominio PUNTO . Tipo
+    (29) Tipo -> . TIPO
+
+    TIPO            shift and go to state 47
+
+    Tipo                           shift and go to state 46
+
+state 38
+
+    (1) S -> Remitente P Password A Asunto . D Destinatario M Mensaje
+
+    D               shift and go to state 48
+
+
+state 39
+
+    (3) Asunto -> Letras . transformacion
+    (32) transformacion -> . Letras transformacion
+    (33) transformacion -> . Numeros transformacion
+    (34) transformacion -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (35) empty -> .
+
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    D               reduce using rule 35 (empty -> .)
+
+    Letras                         shift and go to state 49
+    transformacion                 shift and go to state 50
+    Numeros                        shift and go to state 51
+    empty                          shift and go to state 52
+
+state 40
+
+    (4) Asunto -> Numeros . transformacion
+    (32) transformacion -> . Letras transformacion
+    (33) transformacion -> . Numeros transformacion
+    (34) transformacion -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (35) empty -> .
+
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    D               reduce using rule 35 (empty -> .)
+
+    Numeros                        shift and go to state 51
+    transformacion                 shift and go to state 53
+    Letras                         shift and go to state 49
+    empty                          shift and go to state 52
+
+state 41
+
+    (5) Asunto -> CARACTERES .
+
+    D               reduce using rule 5 (Asunto -> CARACTERES .)
+
+
+state 42
+
+    (6) Asunto -> empty .
+
+    D               reduce using rule 6 (Asunto -> empty .)
+
+
+state 43
+
+    (15) restoPass -> Letras restoPass .
+
+    A               reduce using rule 15 (restoPass -> Letras restoPass .)
+
+
+state 44
+
+    (16) restoPass -> Numeros restoPass .
+
+    A               reduce using rule 16 (restoPass -> Numeros restoPass .)
+
+
+state 45
+
+    (17) restoPass -> Caracteres restoPass .
+
+    A               reduce using rule 17 (restoPass -> Caracteres restoPass .)
+
+
+state 46
+
+    (20) Correo -> Usuario ARROBA Dominio PUNTO Tipo .
+
+    P               reduce using rule 20 (Correo -> Usuario ARROBA Dominio PUNTO Tipo .)
+    M               reduce using rule 20 (Correo -> Usuario ARROBA Dominio PUNTO Tipo .)
+
+
+state 47
+
+    (29) Tipo -> TIPO .
+
+    P               reduce using rule 29 (Tipo -> TIPO .)
+    M               reduce using rule 29 (Tipo -> TIPO .)
+
+
+state 48
+
+    (1) S -> Remitente P Password A Asunto D . Destinatario M Mensaje
+    (11) Destinatario -> . Correo
+    (20) Correo -> . Usuario ARROBA Dominio PUNTO Tipo
+    (21) Usuario -> . Letras restoID
+    (22) Usuario -> . Numeros restoID
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+
+    Destinatario                   shift and go to state 54
+    Correo                         shift and go to state 55
+    Usuario                        shift and go to state 4
+    Letras                         shift and go to state 5
+    Numeros                        shift and go to state 6
+
+state 49
+
+    (32) transformacion -> Letras . transformacion
+    (32) transformacion -> . Letras transformacion
+    (33) transformacion -> . Numeros transformacion
+    (34) transformacion -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (35) empty -> .
+
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    D               reduce using rule 35 (empty -> .)
+    $end            reduce using rule 35 (empty -> .)
+
+    Letras                         shift and go to state 49
+    transformacion                 shift and go to state 56
+    Numeros                        shift and go to state 51
+    empty                          shift and go to state 52
+
+state 50
+
+    (3) Asunto -> Letras transformacion .
+
+    D               reduce using rule 3 (Asunto -> Letras transformacion .)
+
+
+state 51
+
+    (33) transformacion -> Numeros . transformacion
+    (32) transformacion -> . Letras transformacion
+    (33) transformacion -> . Numeros transformacion
+    (34) transformacion -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (35) empty -> .
+
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    D               reduce using rule 35 (empty -> .)
+    $end            reduce using rule 35 (empty -> .)
+
+    Numeros                        shift and go to state 51
+    transformacion                 shift and go to state 57
+    Letras                         shift and go to state 49
+    empty                          shift and go to state 52
+
+state 52
+
+    (34) transformacion -> empty .
+
+    D               reduce using rule 34 (transformacion -> empty .)
+    $end            reduce using rule 34 (transformacion -> empty .)
+
+
+state 53
+
+    (4) Asunto -> Numeros transformacion .
+
+    D               reduce using rule 4 (Asunto -> Numeros transformacion .)
+
+
+state 54
+
+    (1) S -> Remitente P Password A Asunto D Destinatario . M Mensaje
+
+    M               shift and go to state 58
+
+
+state 55
+
+    (11) Destinatario -> Correo .
+
+    M               reduce using rule 11 (Destinatario -> Correo .)
+
+
+state 56
+
+    (32) transformacion -> Letras transformacion .
+
+    D               reduce using rule 32 (transformacion -> Letras transformacion .)
+    $end            reduce using rule 32 (transformacion -> Letras transformacion .)
+
+
+state 57
+
+    (33) transformacion -> Numeros transformacion .
+
+    D               reduce using rule 33 (transformacion -> Numeros transformacion .)
+    $end            reduce using rule 33 (transformacion -> Numeros transformacion .)
+
+
+state 58
+
+    (1) S -> Remitente P Password A Asunto D Destinatario M . Mensaje
+    (7) Mensaje -> . Letras transformacion
+    (8) Mensaje -> . Numeros transformacion
+    (9) Mensaje -> . CARACTERES
+    (10) Mensaje -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (35) empty -> .
+
+    CARACTERES      shift and go to state 62
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    $end            reduce using rule 35 (empty -> .)
+
+    Mensaje                        shift and go to state 59
+    Letras                         shift and go to state 60
+    Numeros                        shift and go to state 61
+    empty                          shift and go to state 63
+
+state 59
+
+    (1) S -> Remitente P Password A Asunto D Destinatario M Mensaje .
+
+    $end            reduce using rule 1 (S -> Remitente P Password A Asunto D Destinatario M Mensaje .)
+
+
+state 60
+
+    (7) Mensaje -> Letras . transformacion
+    (32) transformacion -> . Letras transformacion
+    (33) transformacion -> . Numeros transformacion
+    (34) transformacion -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (35) empty -> .
+
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    $end            reduce using rule 35 (empty -> .)
+
+    Letras                         shift and go to state 49
+    transformacion                 shift and go to state 64
+    Numeros                        shift and go to state 51
+    empty                          shift and go to state 52
+
+state 61
+
+    (8) Mensaje -> Numeros . transformacion
+    (32) transformacion -> . Letras transformacion
+    (33) transformacion -> . Numeros transformacion
+    (34) transformacion -> . empty
+    (30) Letras -> . LETRAS
+    (31) Numeros -> . DIGITOS
+    (35) empty -> .
+
+    LETRAS          shift and go to state 7
+    DIGITOS         shift and go to state 8
+    $end            reduce using rule 35 (empty -> .)
+
+    Numeros                        shift and go to state 51
+    transformacion                 shift and go to state 65
+    Letras                         shift and go to state 49
+    empty                          shift and go to state 52
+
+state 62
+
+    (9) Mensaje -> CARACTERES .
+
+    $end            reduce using rule 9 (Mensaje -> CARACTERES .)
+
+
+state 63
+
+    (10) Mensaje -> empty .
+
+    $end            reduce using rule 10 (Mensaje -> empty .)
+
+
+state 64
+
+    (7) Mensaje -> Letras transformacion .
+
+    $end            reduce using rule 7 (Mensaje -> Letras transformacion .)
+
+
+state 65
+
+    (8) Mensaje -> Numeros transformacion .
+
+    $end            reduce using rule 8 (Mensaje -> Numeros transformacion .)
+
